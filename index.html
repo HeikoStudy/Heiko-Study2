@@ -151,20 +151,122 @@ footer{padding:20px 16px 34px;opacity:.85}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
 
+
+<style id="heiko-dashboard-design">
+:root{--blue:#3159d8;--blue-deep:#203f9f;--page:#f3f5fb;--ink:#172033}
+body{background:var(--page);color:var(--ink)}
+body.light{background:var(--page);color:var(--ink)}
+body:not(.light){background:radial-gradient(ellipse at 10% 0,#20365d 0,transparent 38%),#0b1424;color:var(--text)}
+.site-header{width:min(1120px,calc(100% - 34px));margin:0 auto;padding:26px 0 22px;display:flex;align-items:center;justify-content:space-between;gap:18px;text-align:left}
+.brand-lockup{display:flex;align-items:center;gap:13px}
+.brand-mark{width:62px;height:62px;display:grid;place-items:center;border-radius:19px;background:#3159d8;color:#fff;font-size:2rem;font-weight:900;box-shadow:0 9px 20px #3159d833}
+.brand-copy{display:grid;gap:3px;color:#172033}
+.brand-copy strong{font-size:1.15rem;letter-spacing:.025em}
+.brand-copy span{font-size:.78rem;letter-spacing:.19em;font-weight:800;color:#758096}
+.header-actions{display:flex;gap:10px}
+.icon-button{width:58px;min-width:58px;height:58px;padding:0;border-radius:18px;background:#fff;color:#263247;border:1px solid #e1e5ee;font-size:1.45rem;box-shadow:0 3px 10px #1b2d4a0b}
+main{width:min(1120px,calc(100% - 34px));max-width:1120px;padding:0 0 42px}
+.home-panel{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important}
+.hero-card{position:relative;overflow:hidden;padding:clamp(28px,6vw,54px);border-radius:34px;background:linear-gradient(125deg,#1d397f 0%,#315bd0 58%,#4b73e8 100%);color:#fff;box-shadow:0 20px 45px #203e9633}
+.hero-card:after{content:"";position:absolute;width:440px;height:440px;border:1px solid #ffffff20;border-radius:50%;right:-170px;bottom:-300px;box-shadow:0 0 0 38px #ffffff08,0 0 0 78px #ffffff07}
+.hero-eyebrow{font-size:.83rem;letter-spacing:.2em;font-weight:850;color:#d7e2ff;margin-bottom:27px}
+.hero-card h1{font-size:clamp(2.3rem,7vw,4rem);line-height:1.08;letter-spacing:-.055em;margin:0 0 25px}
+.hero-card p{max-width:720px;color:#e1e9ff;font-size:clamp(1rem,2.8vw,1.3rem);line-height:1.7;margin:0 0 30px}
+.hero-badges{display:flex;flex-wrap:wrap;gap:10px}
+.hero-badges span{border:1px solid #ffffff55;background:#ffffff16;border-radius:999px;padding:9px 15px;font-weight:800;color:#f5f7ff}
+.home-actions{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:26px 0 48px}
+.home-actions button{min-height:88px;border-radius:24px;font-size:1.25rem;box-shadow:0 10px 22px #1d3e9b14}
+.home-choice-button{background:#3159d8;color:white}
+.home-settings-button{background:#fff;color:#172033;border:1px solid #e3e7ef}
+.dashboard-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin:0 0 52px}
+.dashboard-stat{min-height:130px;background:#fff;border:1px solid #e3e8f0;border-radius:27px;padding:21px 22px;box-shadow:0 8px 20px #263d650a;color:#172033}
+.dashboard-stat span{display:block;color:#707b8d;font-size:.78rem;font-weight:850;letter-spacing:.035em;margin-bottom:9px}
+.dashboard-stat strong{font-size:2.15rem;line-height:1.1;letter-spacing:-.04em}
+.activity-section{margin:0 0 28px}
+.activity-heading{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.activity-heading h2{font-size:clamp(1.5rem,4vw,2.15rem);letter-spacing:-.045em}
+.text-button{background:transparent;color:#3159d8;border:0;padding:8px;min-height:40px;box-shadow:none}
+.activity-section>.sub{margin:0 0 16px}
+.activity-list{display:grid;gap:10px}
+.activity-empty,.activity-item{padding:17px 19px;border-radius:18px;background:#fff;border:1px solid #e3e8f0;color:#6b7688}
+.activity-item{display:flex;align-items:center;justify-content:space-between;gap:12px;color:#172033}
+.activity-item small{display:block;color:#788397}
+.activity-score{font-weight:900;color:#3159d8;white-space:nowrap}
+.home-profile-strip{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:18px 20px;border-radius:20px;background:#e8edfb;margin:25px 0}
+.home-profile-strip strong,.home-profile-strip small{display:block;color:#172033}
+.home-profile-strip small{color:#6c7890;margin-top:3px}
+.home-profile-strip button{background:#fff;color:#3159d8;border-color:#dce3f5}
+.profile-card{display:flex;align-items:center;gap:15px;padding:19px;border-radius:20px;background:var(--surface2);border:1px solid var(--line);margin:20px 0}
+.profile-avatar{width:64px;height:64px;display:grid;place-items:center;border-radius:20px;background:#3159d8;color:#fff;font-size:1.8rem;font-weight:900}
+.profile-card strong,.profile-card span{display:block}.profile-card span{color:var(--muted);font-size:.9rem}
+.profile-stats{margin:24px 0}
+body:not(.light) .brand-copy{color:#fff}
+body:not(.light) .brand-copy span{color:#b9c5db}
+body:not(.light) .icon-button{background:var(--surface);color:var(--text);border-color:var(--line)}
+body:not(.light) .dashboard-stat,body:not(.light) .activity-empty,body:not(.light) .activity-item{background:var(--surface);color:var(--text);border-color:var(--line)}
+body:not(.light) .dashboard-stat span,body:not(.light) .activity-item small{color:var(--muted)}
+body:not(.light) .home-settings-button{background:var(--surface);color:var(--text);border-color:var(--line)}
+body:not(.light) .home-profile-strip{background:var(--surface2)}
+body:not(.light) .home-profile-strip strong,body:not(.light) .home-profile-strip small{color:var(--text)}
+body:not(.light) .home-profile-strip button{background:var(--surface);color:var(--text);border-color:var(--line)}
+body:not(.light) .profile-card{background:var(--surface2)}
+body:not(.light) .hero-card{box-shadow:0 20px 45px #0005}
+@media(max-width:620px){
+ .site-header{padding:20px 0 18px}.brand-mark{width:54px;height:54px;border-radius:17px}
+ .brand-copy strong{font-size:1rem}.brand-copy span{font-size:.68rem}
+ .header-actions{gap:7px}.icon-button{width:46px;min-width:46px;height:46px;border-radius:15px;font-size:1.2rem}
+ .hero-card{border-radius:27px;padding:28px 23px}.hero-eyebrow{font-size:.68rem;letter-spacing:.15em;margin-bottom:22px}
+ .hero-card h1{font-size:clamp(2.2rem,10vw,3.2rem)}.hero-card p{font-size:1rem;line-height:1.65}
+ .hero-badges{gap:8px}.hero-badges span{font-size:.82rem;padding:8px 11px}
+ .home-actions{gap:12px;margin:19px 0 32px}.home-actions button{min-height:72px;font-size:1.05rem;border-radius:20px}
+ .dashboard-stats{gap:9px;margin-bottom:38px}.dashboard-stat{min-height:112px;padding:15px 13px;border-radius:22px}
+ .dashboard-stat span{font-size:.67rem;line-height:1.35}.dashboard-stat strong{font-size:1.8rem}
+ .activity-heading{align-items:flex-start}.activity-heading h2{font-size:1.55rem}
+ .home-profile-strip{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:370px){.profile-shortcut{display:none}.dashboard-stat{padding:13px 10px}.dashboard-stat strong{font-size:1.55rem}}
+</style>
+
 </head>
 <body>
-<header>
- <div class="brand">✦ HEIKO STUDY</div>
- <h1>term 2 grade 8 reviewer for STE classes</h1>
- <p>Study smarter. Practice at your own pace.</p>
+<header class="site-header">
+ <div class="brand-lockup">
+  <div class="brand-mark" aria-hidden="true">H</div>
+  <div class="brand-copy"><strong>HEIKO STUDY</strong><span>GRADE 8 · STE</span></div>
+ </div>
+ <nav class="header-actions" aria-label="Quick navigation">
+  <button class="icon-button" type="button" onclick="show('home')" aria-label="Home" title="Home">⌂</button>
+  <button class="icon-button" type="button" onclick="cycleTheme()" aria-label="Toggle theme" title="Toggle theme" id="themeQuickButton">☼</button>
+  <button class="icon-button profile-shortcut" type="button" onclick="openProfile()" aria-label="Profile" title="Profile">●</button>
+ </nav>
 </header>
 <main>
-<section id="home" class="panel">
- <div class="menu">
-  <button class="primary-menu" onclick="show('choices')"><span>📚 Choices <small class="hint">Open tests and reviewers</small></span></button>
-  <button class="secondary" onclick="show('settings')"><span>⚙️ Settings <small class="hint">Personalize your study space</small></span></button>
+<section id="home" class="home-panel">
+ <div class="hero-card">
+  <div class="hero-eyebrow">BAGABAG NATIONAL HIGH SCHOOL · STE</div>
+  <h1>Term 2 Grade 8<br>Reviewer</h1>
+  <p>Your study space for Term 2. Review important concepts, take timed tests, and check how much you have learned — one subject at a time.</p>
+  <div class="hero-badges"><span>11 subjects</span><span>4 test modes</span><span>1–100 items</span><span>Progress saved on this device</span></div>
  </div>
-<div class="curriculum-note">Starter questions are based on researched Grade 8 Term 2 curriculum themes. Some STE-specific subject splits and your school’s pacing still need confirmation.</div>
+ <div class="home-actions">
+  <button class="home-choice-button" onclick="show('choices')"><span>✦ &nbsp; Choices</span></button>
+  <button class="home-settings-button" onclick="show('settings')"><span>⚙ &nbsp; Settings</span></button>
+ </div>
+ <div class="dashboard-stats">
+  <div class="dashboard-stat"><span>SUBJECTS</span><strong>11</strong></div>
+  <div class="dashboard-stat"><span>TEST FORMATS</span><strong>04</strong></div>
+  <div class="dashboard-stat"><span>TESTS COMPLETED</span><strong id="homeTestsCompleted">0</strong></div>
+ </div>
+ <div class="activity-section">
+  <div class="activity-heading"><h2>Pick up where you left off</h2><button class="text-button" onclick="renderHistory();show('progress')">View history →</button></div>
+  <p class="sub">Your saved activity stays on this device.</p>
+  <div id="homeActivity" class="activity-list"><div class="activity-empty">Your recent study activity will appear here after you complete a test.</div></div>
+ </div>
+ <div class="home-profile-strip">
+  <div><strong id="homeProfileName">Your study profile</strong><small id="homeProfileMeta">Add your learner details</small></div>
+  <button class="secondary" onclick="openProfile()">View profile →</button>
+ </div>
+ <div class="curriculum-note">Starter questions are based on researched Grade 8 Term 2 curriculum themes. Some STE-specific subject splits and your school’s pacing still need confirmation.</div>
 </section>
 <section id="choices" class="panel hidden">
  <button class="secondary back" onclick="show('home')">← Back</button><h2>Choose what to study</h2><p class="sub">Pick a way to learn or practice.</p>
@@ -211,6 +313,27 @@ footer{padding:20px 16px 34px;opacity:.85}
 </section>
 <section id="progress" class="panel hidden">
  <button class="secondary back" onclick="show('settings')">← Back to Settings</button><h2>Study progress</h2><p class="sub">Your most recent saved results on this device.</p><div id="historyList"></div><button class="secondary full" onclick="clearHistory()">Clear saved test history</button>
+</section>
+<section id="profile" class="panel hidden">
+ <button class="secondary back" onclick="show('home')">← Back</button>
+ <span class="tag">LEARNER PROFILE</span><h2>Your profile</h2>
+ <p class="sub">Manage the study details shown on this device. This is a personal study profile, not an identity or background-verification service.</p>
+ <div class="profile-card">
+  <div class="profile-avatar" id="profileAvatar">H</div>
+  <div><strong id="profileDisplayName">Heiko learner</strong><span id="profileDisplayMeta">Grade 8 · STE</span></div>
+ </div>
+ <div class="field"><label for="profileName">Display name</label><input id="profileName" maxlength="32" placeholder="Enter a display name"></div>
+ <div class="setting-grid">
+  <div class="field"><label for="profileGrade">Grade level</label><select id="profileGrade"><option>Grade 7</option><option selected>Grade 8</option><option>Grade 9</option><option>Grade 10</option><option>Other</option></select></div>
+  <div class="field"><label for="profileSection">Section / strand</label><input id="profileSection" maxlength="40" placeholder="e.g. STE"></div>
+ </div>
+ <button class="full" onclick="saveProfile()">Save profile</button><p id="profileMessage" class="muted" aria-live="polite"></p>
+ <div class="dashboard-stats profile-stats">
+  <div class="dashboard-stat"><span>TESTS COMPLETED</span><strong id="profileTests">0</strong></div>
+  <div class="dashboard-stat"><span>AVERAGE SCORE</span><strong id="profileAverage">—</strong></div>
+  <div class="dashboard-stat"><span>BEST SCORE</span><strong id="profileBest">—</strong></div>
+ </div>
+ <div class="notice">Your profile and test history are saved locally in this browser. They do not automatically sync to another device or create a verified school account.</div>
 </section>
 <section id="settings" class="panel hidden">
  <button class="secondary back" onclick="show('home')">← Back</button><span class="tag">PERSONALIZE</span><h2>Settings</h2><p class="sub">Make Heiko Study comfortable and easy to read.</p>
@@ -286,16 +409,56 @@ function normalizeAnswer(v){return String(v??'').toLowerCase().replaceAll('π','
 function isCorrect(q,response){if(currentMode==='True or False')return response===q.tfAnswer;if(currentMode==='Identification'){const value=normalizeAnswer(response);const accepted=[q.answer,...(q.aliases||[])].map(normalizeAnswer);if(accepted.includes(value))return true;const numeric=normalizeAnswer(q.answer).match(/^-?\d+(?:\.\d+)?/);return !!numeric&&value===numeric[0];}return response===q.answer;}
 function submitAnswer(response,timedOut){if(quizAnswered)return;quizAnswered=true;clearInterval(timerId);const q=quizQuestions[quizIndex];const correct=isCorrect(q,response);playAnswerSound(correct,timedOut);if(correct)quizScore++;const area=document.getElementById('answerArea');const buttons=area.querySelectorAll('button');buttons.forEach(b=>{b.disabled=true;if(currentMode==='True or False'&&((b.textContent==='True')===q.tfAnswer))b.classList.add('correct');if(currentMode!=='True or False'&&currentMode!=='Identification'){const label=b.querySelector('span:last-child')?.textContent||'';if(label===q.answer)b.classList.add('correct');if(label===response&&!correct)b.classList.add('wrong');}});const textInput=area.querySelector('input');if(textInput)textInput.disabled=true;const feedback=document.getElementById('answerFeedback');feedback.classList.remove('hidden','good','bad');feedback.classList.add(correct?'good':'bad');const title=document.createElement('strong');title.textContent=timedOut?'⏱ Time is up':correct?'✓ Correct!':'✕ Not quite';const answer=document.createElement('div');answer.textContent='Correct answer: '+(currentMode==='True or False'?(q.tfAnswer?'True':'False'):q.answer);feedback.append(title,answer);if(getSettings().explanations!==false){const exp=document.createElement('p');exp.style.margin='9px 0 0';exp.textContent=q.explanation;feedback.appendChild(exp);}document.getElementById('nextQuestion').classList.remove('hidden');document.getElementById('nextQuestion').textContent=quizIndex===quizQuestions.length-1?'See results →':'Next question →';document.getElementById('quitQuiz').classList.add('hidden');}
 function nextQuestion(){if(!quizAnswered)return;if(quizIndex<quizQuestions.length-1){quizIndex++;loadQuizQuestion();}else{finishTest();}}
-function finishTest(){clearInterval(timerId);const total=quizQuestions.length;const incorrect=total-quizScore;const percent=Math.round(quizScore/total*100);document.getElementById('resultHeading').textContent=currentSubject+' · '+currentMode;document.getElementById('resultSubtitle').textContent='Preferred difficulty: '+difficulty+'. You completed the test.';document.getElementById('resultScore').textContent=quizScore+' / '+total;document.getElementById('resultPercent').textContent=percent+'% accuracy';document.getElementById('resultCorrect').textContent=quizScore;document.getElementById('resultIncorrect').textContent=incorrect;document.getElementById('resultDuration').textContent=total;document.getElementById('resultMessage').textContent=percent>=80?'Great work! Review the explanations for anything you missed.':percent>=50?'Good effort. Check the explanations, then try another round.':'Keep practicing. Review the notes and try again when ready.';if(getSettings().saveProgress!==false){let hist=[];try{hist=JSON.parse(localStorage.getItem('heikoScores')||'[]');}catch(e){}hist.unshift({subject:currentSubject,mode:currentMode,difficulty,score:quizScore,total,percent,date:new Date().toLocaleString()});localStorage.setItem('heikoScores',JSON.stringify(hist.slice(0,30)));}show('results');}
+function finishTest(){clearInterval(timerId);const total=quizQuestions.length;const incorrect=total-quizScore;const percent=Math.round(quizScore/total*100);document.getElementById('resultHeading').textContent=currentSubject+' · '+currentMode;document.getElementById('resultSubtitle').textContent='Preferred difficulty: '+difficulty+'. You completed the test.';document.getElementById('resultScore').textContent=quizScore+' / '+total;document.getElementById('resultPercent').textContent=percent+'% accuracy';document.getElementById('resultCorrect').textContent=quizScore;document.getElementById('resultIncorrect').textContent=incorrect;document.getElementById('resultDuration').textContent=total;document.getElementById('resultMessage').textContent=percent>=80?'Great work! Review the explanations for anything you missed.':percent>=50?'Good effort. Check the explanations, then try another round.':'Keep practicing. Review the notes and try again when ready.';if(getSettings().saveProgress!==false){let hist=[];try{hist=JSON.parse(localStorage.getItem('heikoScores')||'[]');}catch(e){}hist.unshift({subject:currentSubject,mode:currentMode,difficulty,score:quizScore,total,percent,date:new Date().toLocaleString()});localStorage.setItem('heikoScores',JSON.stringify(hist.slice(0,30)));}updateHomeDashboard();refreshProfileStats();show('results');}
 function retryTest(){if(!lastRunConfig)return show('choices');document.getElementById('questionCount').value=lastRunConfig.requested;startTest();}
 function confirmQuitQuiz(){if(confirm('Exit this test? Your current score will not be saved.')){clearInterval(timerId);show('subject');}}
 function renderHistory(){const root=document.getElementById('historyList');root.innerHTML='';let hist=[];try{hist=JSON.parse(localStorage.getItem('heikoScores')||'[]');}catch(e){}if(!hist.length){root.textContent='No saved tests yet. Complete a test with Save scores and progress turned on.';return;}hist.forEach(h=>{const row=document.createElement('div');row.className='history-row';const left=document.createElement('div');const title=document.createElement('strong');title.textContent=h.subject+' · '+h.mode;const detail=document.createElement('div');detail.className='muted';detail.textContent=h.date+' · '+h.difficulty;left.append(title,detail);const score=document.createElement('strong');score.textContent=h.score+'/'+h.total+' ('+h.percent+'%)';row.append(left,score);root.appendChild(row);});}
 function clearHistory(){if(confirm('Clear saved test history on this device?')){localStorage.removeItem('heikoScores');renderHistory();}}
+
+function readScores(){try{return JSON.parse(localStorage.getItem('heikoScores')||'[]')}catch(e){return []}}
+function readProfile(){try{return JSON.parse(localStorage.getItem('heikoProfile')||'{}')}catch(e){return {}}}
+function updateHomeDashboard(){
+ const scores=readScores();const profile=readProfile();
+ document.getElementById('homeTestsCompleted').textContent=scores.length;
+ const name=profile.name||'Your study profile';
+ document.getElementById('homeProfileName').textContent=name;
+ document.getElementById('homeProfileMeta').textContent=(profile.grade||'Grade 8')+' · '+(profile.section||'STE');
+ const root=document.getElementById('homeActivity');root.innerHTML='';
+ if(!scores.length){const empty=document.createElement('div');empty.className='activity-empty';empty.textContent='Your recent study activity will appear here after you complete a test.';root.appendChild(empty);return;}
+ scores.slice(0,3).forEach(item=>{const row=document.createElement('div');row.className='activity-item';const left=document.createElement('div');const title=document.createElement('strong');title.textContent=item.subject+' · '+item.mode;const meta=document.createElement('small');meta.textContent=(item.date||'Completed')+' · '+(item.difficulty||'');left.append(title,meta);const score=document.createElement('span');score.className='activity-score';score.textContent=item.score+'/'+item.total+' ('+item.percent+'%)';row.append(left,score);root.appendChild(row);});
+}
+function openProfile(){
+ const p=readProfile();document.getElementById('profileName').value=p.name||'';
+ document.getElementById('profileGrade').value=p.grade||'Grade 8';
+ document.getElementById('profileSection').value=p.section||'STE';
+ refreshProfileStats();show('profile');
+}
+function saveProfile(){
+ const p={name:document.getElementById('profileName').value.trim().slice(0,32),grade:document.getElementById('profileGrade').value,section:document.getElementById('profileSection').value.trim().slice(0,40)};
+ localStorage.setItem('heikoProfile',JSON.stringify(p));document.getElementById('profileMessage').textContent='✓ Profile saved on this device.';
+ refreshProfileStats();updateHomeDashboard();
+}
+function refreshProfileStats(){
+ const p=readProfile(),scores=readScores();const display=p.name||'Heiko learner';
+ document.getElementById('profileDisplayName').textContent=display;
+ document.getElementById('profileDisplayMeta').textContent=(p.grade||'Grade 8')+' · '+(p.section||'STE');
+ document.getElementById('profileAvatar').textContent=(display.trim()[0]||'H').toUpperCase();
+ document.getElementById('profileTests').textContent=scores.length;
+ const avg=scores.length?Math.round(scores.reduce((sum,x)=>sum+(Number(x.percent)||0),0)/scores.length):null;
+ document.getElementById('profileAverage').textContent=avg===null?'—':avg+'%';
+ document.getElementById('profileBest').textContent=scores.length?Math.max(...scores.map(x=>Number(x.percent)||0))+'%':'—';
+}
+function cycleTheme(){
+ const current=getSettings().theme||'light';const next=current==='light'?'dark':'light';
+ const settings={...getSettings(),theme:next};localStorage.setItem('heikoSettings',JSON.stringify(settings));applySettings(settings);
+ document.getElementById('themeQuickButton').textContent=next==='light'?'☾':'☼';
+}
+
 function getSettings(){try{return JSON.parse(localStorage.getItem('heikoSettings')||'{}')}catch(e){return {};}}
 function saveSettings(){const data={};settingIds.forEach(id=>{const el=document.getElementById(id);data[id]=el.type==='checkbox'?el.checked:el.value;});data.rush=validNum('defaultRush',10,3600);data.regular=validNum('defaultRegular',60,3600);data.count=validNum('defaultCount',10,100);data.difficulty=data.defaultDifficulty;localStorage.setItem('heikoSettings',JSON.stringify(data));applySettings(data);document.getElementById('saveMessage').textContent='✓ All settings saved on this device!';}
 function validNum(id,fallback,max){const n=Number(document.getElementById(id).value);return Number.isInteger(n)&&n>=1&&n<=max?n:fallback;}
 function applySettings(s){const theme=s.theme||'dark';document.body.classList.toggle('light',theme==='light'||(theme==='system'&&matchMedia('(prefers-color-scheme: light)').matches));document.body.classList.toggle('high-contrast',!!s.contrast);document.body.classList.toggle('no-motion',s.animations===false);document.body.classList.toggle('spacious',s.density==='spacious');document.body.classList.toggle('compact',s.density==='compact');document.documentElement.style.setProperty('--font',(s.fontSize||16)+'px');document.documentElement.style.setProperty('--button-scale',s.bigButtons?'1.12':'1');document.documentElement.style.setProperty('--radius',s.corners==='square'?'7px':s.corners==='soft'?'13px':'22px');}
-function loadSettings(){const s=getSettings();const defaults={theme:'dark',density:'normal',corners:'round',fontSize:'16',contrast:false,bigButtons:false,animations:true,sounds:true,defaultRush:10,defaultRegular:60,defaultCount:10,defaultDifficulty:'Medium',shuffleQuestions:true,shuffleChoices:true,explanations:true,saveProgress:true};const merged={...defaults,...s};settingIds.forEach(id=>{const el=document.getElementById(id);if(el.type==='checkbox')el.checked=!!merged[id];else el.value=merged[id];});applySettings(merged);}
+function loadSettings(){const s=getSettings();const defaults={theme:'light',density:'normal',corners:'round',fontSize:'16',contrast:false,bigButtons:false,animations:true,sounds:true,defaultRush:10,defaultRegular:60,defaultCount:10,defaultDifficulty:'Medium',shuffleQuestions:true,shuffleChoices:true,explanations:true,saveProgress:true};const merged={...defaults,...s};settingIds.forEach(id=>{const el=document.getElementById(id);if(el.type==='checkbox')el.checked=!!merged[id];else el.value=merged[id];});applySettings(merged);const quick=document.getElementById('themeQuickButton');if(quick)quick.textContent=(merged.theme==='light'?'☾':'☼');updateHomeDashboard();refreshProfileStats();}
 let heikoAudioContext=null;
 function getAudioContext(){const AudioCtx=window.AudioContext||window.webkitAudioContext;if(!AudioCtx)return null;if(!heikoAudioContext)heikoAudioContext=new AudioCtx();if(heikoAudioContext.state==='suspended')heikoAudioContext.resume();return heikoAudioContext;}
 function playTone(freq,duration=.09,wave='sine',volume=.035,delay=0){if(getSettings().sounds!==true)return;try{const ctx=getAudioContext();if(!ctx)return;const osc=ctx.createOscillator(),gain=ctx.createGain();osc.type=wave;osc.frequency.setValueAtTime(freq,ctx.currentTime+delay);gain.gain.setValueAtTime(.0001,ctx.currentTime+delay);gain.gain.exponentialRampToValueAtTime(volume,ctx.currentTime+delay+.012);gain.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+delay+duration);osc.connect(gain);gain.connect(ctx.destination);osc.start(ctx.currentTime+delay);osc.stop(ctx.currentTime+delay+duration+.02);}catch(e){}}
