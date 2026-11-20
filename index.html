@@ -79,6 +79,52 @@ body.compact .panel{padding:17px}body.compact .grid{gap:9px}body.compact .field{
 .quiz-question{padding:22px;border:1px solid var(--line);background:var(--surface2);border-radius:18px}.quiz-question h2{font-size:clamp(1.18rem,4vw,1.55rem);line-height:1.35;margin-top:12px}.answer-list{display:grid;gap:10px}.answer-option{background:var(--surface);color:var(--text);border:1px solid var(--line);text-align:left;display:flex;align-items:flex-start;gap:12px;width:100%;min-height:56px}.answer-option .letter{display:grid;place-items:center;min-width:28px;height:28px;border-radius:8px;background:var(--surface2);color:var(--accent);font-weight:900}.answer-option.correct{border-color:#21b985;background:#143c35}.answer-option.wrong{border-color:#dc756c;background:#4a252b;color:#fff}.feedback{padding:15px;border-radius:14px;border:1px solid var(--line);background:var(--surface2)}.feedback.good{border-color:#21b985}.feedback.bad{border-color:#dc756c}.feedback strong{display:block;font-size:1.05rem;margin-bottom:3px}.answer-entry{display:grid;gap:10px}.answer-entry input{min-height:54px}.result-score{font-size:clamp(2.3rem,8vw,3.4rem);font-weight:900;letter-spacing:-.04em;line-height:1.1}.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:18px 0}.result-stat{padding:13px;border-radius:14px;background:var(--surface2);border:1px solid var(--line)}.result-stat b{display:block;font-size:1.25rem}.result-stat small{color:var(--muted)}.history-row{display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.history-row:last-child{border-bottom:0}.curriculum-note{margin:14px 0 0;padding:14px;border-left:4px solid var(--accent2);border-radius:12px;background:var(--surface2);color:var(--muted);font-size:.9rem}.review-points{display:grid;gap:10px;margin-top:16px}.review-point{padding:14px;border:1px solid var(--line);border-radius:13px;background:var(--surface2)}.review-point::before{content:'✓';color:var(--accent);font-weight:900;margin-right:9px}.source-links{display:flex;gap:9px;flex-wrap:wrap;margin-top:12px}.source-links a{color:var(--accent2);font-size:.85rem;font-weight:700}
 @media(max-width:520px){.quiz-top{align-items:flex-start}.timer-wrap{width:100%;text-align:left}.result-grid{grid-template-columns:1fr}.quiz-question{padding:17px}}
 
+
+/* Heiko Study visual refresh */
+:root{--accent:#69e6bd;--accent2:#8ac5ff;--radius:24px;--shadow:0 22px 60px #0007}
+body{background:radial-gradient(ellipse at 8% -5%,#245879 0,transparent 35%),radial-gradient(ellipse at 100% 10%,#45346f 0,transparent 34%),#081321}
+body.light{background:radial-gradient(ellipse at 8% -5%,#d5f1ff 0,transparent 38%),radial-gradient(ellipse at 100% 10%,#e9ddff 0,transparent 34%),#edf3fb}
+header{padding:42px 16px 30px}
+.brand{background:linear-gradient(110deg,#153c48,#28264c);border-color:#52738d;color:#9ff5d9;box-shadow:0 8px 25px #0003}
+header h1{font-size:clamp(1.9rem,6vw,3rem);letter-spacing:-.045em}
+header p{font-size:1.04rem}
+main{width:min(1000px,calc(100% - 26px))}
+.panel{border-radius:28px;background:linear-gradient(145deg,color-mix(in srgb,var(--surface) 98%,transparent),color-mix(in srgb,var(--surface2) 78%,transparent));backdrop-filter:blur(12px);border-color:color-mix(in srgb,var(--line) 78%,transparent);box-shadow:var(--shadow)}
+button{box-shadow:0 5px 14px #0002}
+button:disabled{opacity:.75;cursor:default;transform:none}
+.menu button{min-height:76px;border-radius:19px}
+.menu button.primary-menu{background:linear-gradient(115deg,#67e0b4,#82d6f5 58%,#a6b9ff);box-shadow:0 9px 24px #43cba333}
+.secondary{box-shadow:none}
+.subject,.mode{border-radius:18px;min-height:112px;background:linear-gradient(145deg,var(--surface2),color-mix(in srgb,var(--surface2) 75%,var(--accent2) 25%));transition:transform .18s,border-color .18s,box-shadow .18s}
+.subject:hover,.mode:hover{transform:translateY(-3px);border-color:var(--accent2);box-shadow:0 12px 25px #0003}
+.subject::before,.mode::before{width:5px;background:linear-gradient(#69e6bd,#8ac5ff)}
+.tag{background:linear-gradient(100deg,#1d5149,#263e65);color:#b8ffe7}
+.field{padding:3px 0}
+input,select{border-radius:14px}
+.notice,.preview,.curriculum-note{border-radius:17px}
+.quiz-shell{gap:18px}
+.quiz-top{gap:14px}
+.quiz-question{padding:clamp(18px,4vw,28px);border-radius:22px;background:linear-gradient(145deg,var(--surface2),color-mix(in srgb,var(--surface2) 85%,var(--accent2) 15%));box-shadow:inset 0 1px #ffffff12}
+.quiz-question h2{font-size:clamp(1.25rem,4.5vw,1.75rem);margin:16px 0 20px}
+.answer-list{gap:11px}
+.answer-option{border-radius:15px;min-height:60px;padding:14px 15px;box-shadow:none;transition:border-color .15s,background .15s,transform .15s}
+.answer-option:not(:disabled):hover{border-color:var(--accent2);transform:translateX(2px)}
+.answer-option.correct{background:#124c3d;color:#f0fff9;border-color:#45d7a8}
+.answer-option.wrong{background:#552d35;color:#fff;border-color:#ff928b}
+.feedback{margin-top:18px;padding:16px 17px;border-radius:16px;line-height:1.55;animation:feedbackIn .2s ease-out}
+.feedback.good{background:linear-gradient(120deg,#123d34,#174b40);color:#eafff6;border-color:#43d5a4}
+.feedback.bad{background:linear-gradient(120deg,#482b35,#50313a);color:#fff2f1;border-color:#f08b83}
+.feedback strong{font-size:1.12rem}
+#nextQuestion{min-height:56px;font-size:1.02rem}
+.timer-track,.progress-track{height:10px}
+.pill{padding:7px 12px}
+.settings-group{padding:21px 0}
+.group-icon{width:42px;height:42px;border-radius:14px}
+.toggle-line{padding:14px 0}
+footer{padding-top:22px}
+@keyframes feedbackIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:600px){header{padding:32px 14px 24px}.panel{padding:17px}.subject,.mode{min-height:100px}.quiz-question{padding:17px}.answer-option{padding:13px}}
+
 </style>
 </head>
 <body>
@@ -123,9 +169,10 @@ body.compact .panel{padding:17px}body.compact .grid{gap:9px}body.compact .field{
  <div class="quiz-shell">
   <div class="quiz-top"><div><span class="tag">ACTIVE TEST</span><div class="quiz-meta"><span class="pill" id="quizSubject"></span><span class="pill" id="quizMode"></span><span class="pill" id="quizDifficulty"></span></div></div><div class="timer-wrap"><span class="timer-text" id="timerText">00:00</span><div class="timer-track"><div id="timerFill" class="timer-fill"></div></div></div></div>
   <div><div class="quiz-top"><span class="muted" id="questionCounter">Question 1 of 10</span><strong id="questionTopic"></strong></div><div class="progress-track" style="margin-top:8px"><div id="questionProgress" class="progress-fill"></div></div></div>
-  <div class="quiz-question"><div class="quiz-meta"><span class="pill" id="questionDifficulty"></span><span class="pill" id="questionType"></span></div><h2 id="questionPrompt"></h2></div>
-  <div id="answerArea" class="answer-list"></div>
-  <div id="answerFeedback" class="feedback hidden" aria-live="polite"></div>
+  <div class="quiz-question"><div class="quiz-meta"><span class="pill" id="questionDifficulty"></span><span class="pill" id="questionType"></span></div><h2 id="questionPrompt"></h2>
+   <div id="answerArea" class="answer-list"></div>
+   <div id="answerFeedback" class="feedback hidden" aria-live="polite"></div>
+  </div>
   <button id="nextQuestion" class="full hidden" onclick="nextQuestion()">Next question →</button>
   <button id="quitQuiz" class="secondary full" onclick="confirmQuitQuiz()">Exit test</button>
  </div>
@@ -212,7 +259,7 @@ function startTimer(){secondsLeft=secondsPerQuestion;updateTimer();timerId=setIn
 function updateTimer(){const min=Math.floor(secondsLeft/60),sec=secondsLeft%60;document.getElementById('timerText').textContent=String(min).padStart(2,'0')+':'+String(sec).padStart(2,'0');const pct=Math.max(0,secondsLeft/secondsPerQuestion*100);const fill=document.getElementById('timerFill');fill.style.width=pct+'%';fill.classList.toggle('low',pct<=25);}
 function normalizeAnswer(v){return String(v??'').toLowerCase().replaceAll('π','pi').replaceAll('⅓','1/3').replaceAll('²','2').replaceAll('³','3').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/[^a-z0-9.\-]+/g,'').trim();}
 function isCorrect(q,response){if(currentMode==='True or False')return response===q.tfAnswer;if(currentMode==='Identification'){const value=normalizeAnswer(response);const accepted=[q.answer,...(q.aliases||[])].map(normalizeAnswer);if(accepted.includes(value))return true;const numeric=normalizeAnswer(q.answer).match(/^-?\d+(?:\.\d+)?/);return !!numeric&&value===numeric[0];}return response===q.answer;}
-function submitAnswer(response,timedOut){if(quizAnswered)return;quizAnswered=true;clearInterval(timerId);const q=quizQuestions[quizIndex];const correct=isCorrect(q,response);if(correct)quizScore++;const area=document.getElementById('answerArea');const buttons=area.querySelectorAll('button');buttons.forEach(b=>{b.disabled=true;if(currentMode==='True or False'&&((b.textContent==='True')===q.tfAnswer))b.classList.add('correct');if(currentMode!=='True or False'&&currentMode!=='Identification'){const label=b.querySelector('span:last-child')?.textContent||'';if(label===q.answer)b.classList.add('correct');if(label===response&&!correct)b.classList.add('wrong');}});const textInput=area.querySelector('input');if(textInput)textInput.disabled=true;const feedback=document.getElementById('answerFeedback');feedback.classList.remove('hidden','good','bad');feedback.classList.add(correct?'good':'bad');const title=document.createElement('strong');title.textContent=timedOut?'⏱ Time is up':correct?'✓ Correct!':'✕ Not quite';const answer=document.createElement('div');answer.textContent='Correct answer: '+(currentMode==='True or False'?(q.tfAnswer?'True':'False'):q.answer);feedback.append(title,answer);if(getSettings().explanations!==false){const exp=document.createElement('p');exp.style.margin='9px 0 0';exp.textContent=q.explanation;feedback.appendChild(exp);}document.getElementById('nextQuestion').classList.remove('hidden');document.getElementById('nextQuestion').textContent=quizIndex===quizQuestions.length-1?'See results →':'Next question →';document.getElementById('quitQuiz').classList.add('hidden');}
+function submitAnswer(response,timedOut){if(quizAnswered)return;quizAnswered=true;clearInterval(timerId);const q=quizQuestions[quizIndex];const correct=isCorrect(q,response);playAnswerSound(correct,timedOut);if(correct)quizScore++;const area=document.getElementById('answerArea');const buttons=area.querySelectorAll('button');buttons.forEach(b=>{b.disabled=true;if(currentMode==='True or False'&&((b.textContent==='True')===q.tfAnswer))b.classList.add('correct');if(currentMode!=='True or False'&&currentMode!=='Identification'){const label=b.querySelector('span:last-child')?.textContent||'';if(label===q.answer)b.classList.add('correct');if(label===response&&!correct)b.classList.add('wrong');}});const textInput=area.querySelector('input');if(textInput)textInput.disabled=true;const feedback=document.getElementById('answerFeedback');feedback.classList.remove('hidden','good','bad');feedback.classList.add(correct?'good':'bad');const title=document.createElement('strong');title.textContent=timedOut?'⏱ Time is up':correct?'✓ Correct!':'✕ Not quite';const answer=document.createElement('div');answer.textContent='Correct answer: '+(currentMode==='True or False'?(q.tfAnswer?'True':'False'):q.answer);feedback.append(title,answer);if(getSettings().explanations!==false){const exp=document.createElement('p');exp.style.margin='9px 0 0';exp.textContent=q.explanation;feedback.appendChild(exp);}document.getElementById('nextQuestion').classList.remove('hidden');document.getElementById('nextQuestion').textContent=quizIndex===quizQuestions.length-1?'See results →':'Next question →';document.getElementById('quitQuiz').classList.add('hidden');}
 function nextQuestion(){if(!quizAnswered)return;if(quizIndex<quizQuestions.length-1){quizIndex++;loadQuizQuestion();}else{finishTest();}}
 function finishTest(){clearInterval(timerId);const total=quizQuestions.length;const incorrect=total-quizScore;const percent=Math.round(quizScore/total*100);document.getElementById('resultHeading').textContent=currentSubject+' · '+currentMode;document.getElementById('resultSubtitle').textContent='Preferred difficulty: '+difficulty+'. You completed the test.';document.getElementById('resultScore').textContent=quizScore+' / '+total;document.getElementById('resultPercent').textContent=percent+'% accuracy';document.getElementById('resultCorrect').textContent=quizScore;document.getElementById('resultIncorrect').textContent=incorrect;document.getElementById('resultDuration').textContent=total;document.getElementById('resultMessage').textContent=percent>=80?'Great work! Review the explanations for anything you missed.':percent>=50?'Good effort. Check the explanations, then try another round.':'Keep practicing. Review the notes and try again when ready.';if(getSettings().saveProgress!==false){let hist=[];try{hist=JSON.parse(localStorage.getItem('heikoScores')||'[]');}catch(e){}hist.unshift({subject:currentSubject,mode:currentMode,difficulty,score:quizScore,total,percent,date:new Date().toLocaleString()});localStorage.setItem('heikoScores',JSON.stringify(hist.slice(0,30)));}show('results');}
 function retryTest(){if(!lastRunConfig)return show('choices');document.getElementById('questionCount').value=lastRunConfig.requested;startTest();}
@@ -224,7 +271,11 @@ function saveSettings(){const data={};settingIds.forEach(id=>{const el=document.
 function validNum(id,fallback,max){const n=Number(document.getElementById(id).value);return Number.isInteger(n)&&n>=1&&n<=max?n:fallback;}
 function applySettings(s){const theme=s.theme||'dark';document.body.classList.toggle('light',theme==='light'||(theme==='system'&&matchMedia('(prefers-color-scheme: light)').matches));document.body.classList.toggle('high-contrast',!!s.contrast);document.body.classList.toggle('no-motion',s.animations===false);document.body.classList.toggle('spacious',s.density==='spacious');document.body.classList.toggle('compact',s.density==='compact');document.documentElement.style.setProperty('--font',(s.fontSize||16)+'px');document.documentElement.style.setProperty('--button-scale',s.bigButtons?'1.12':'1');document.documentElement.style.setProperty('--radius',s.corners==='square'?'7px':s.corners==='soft'?'13px':'22px');}
 function loadSettings(){const s=getSettings();const defaults={theme:'dark',density:'normal',corners:'round',fontSize:'16',contrast:false,bigButtons:false,animations:true,sounds:false,defaultRush:10,defaultRegular:60,defaultCount:10,defaultDifficulty:'Medium',shuffleQuestions:true,shuffleChoices:true,explanations:true,saveProgress:true};const merged={...defaults,...s};settingIds.forEach(id=>{const el=document.getElementById(id);if(el.type==='checkbox')el.checked=!!merged[id];else el.value=merged[id];});applySettings(merged);}
-function playClick(){const s=getSettings();if(s.sounds!==true)return;try{const ctx=new (window.AudioContext||window.webkitAudioContext)();const osc=ctx.createOscillator(),gain=ctx.createGain();osc.connect(gain);gain.connect(ctx.destination);osc.frequency.value=660;gain.gain.setValueAtTime(.045,ctx.currentTime);gain.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.08);osc.start();osc.stop(ctx.currentTime+.08);}catch(e){}}
+let heikoAudioContext=null;
+function getAudioContext(){const AudioCtx=window.AudioContext||window.webkitAudioContext;if(!AudioCtx)return null;if(!heikoAudioContext)heikoAudioContext=new AudioCtx();if(heikoAudioContext.state==='suspended')heikoAudioContext.resume();return heikoAudioContext;}
+function playTone(freq,duration=.09,wave='sine',volume=.035,delay=0){if(getSettings().sounds!==true)return;try{const ctx=getAudioContext();if(!ctx)return;const osc=ctx.createOscillator(),gain=ctx.createGain();osc.type=wave;osc.frequency.setValueAtTime(freq,ctx.currentTime+delay);gain.gain.setValueAtTime(.0001,ctx.currentTime+delay);gain.gain.exponentialRampToValueAtTime(volume,ctx.currentTime+delay+.012);gain.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+delay+duration);osc.connect(gain);gain.connect(ctx.destination);osc.start(ctx.currentTime+delay);osc.stop(ctx.currentTime+delay+duration+.02);}catch(e){}}
+function playClick(){playTone(620,.055,'sine',.018);}
+function playAnswerSound(correct,timedOut){if(timedOut){playTone(260,.18,'triangle',.045);return;}if(correct){playTone(660,.1,'sine',.04);playTone(880,.14,'sine',.04,.1);}else{playTone(330,.13,'triangle',.04);playTone(245,.17,'triangle',.04,.12);}}
 document.addEventListener('click',e=>{if(e.target.closest('button'))playClick();});
 makeCards('testSubjects','tests');makeCards('reviewSubjects','reviewers');loadSettings();
 </script>
