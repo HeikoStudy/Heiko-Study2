@@ -301,7 +301,7 @@ button{transform-origin:center;zoom:var(--button-scale,1)}
  <div class="hero-card">
   <div class="hero-eyebrow">BAGABAG NATIONAL HIGH SCHOOL · STE</div>
   <h1>Term 2 Grade 8<br>Reviewer</h1>
-  <p>Your study space for Term 2. Review important concepts, take timed tests, and check how much you have learned — one subject at a time.</p>
+  <p>Review your Term 2 lessons and practice with quizzes for each subject.</p>
   <div class="hero-badges"><span>11 subjects</span><span>4 test modes</span><span>1–100 items</span><span>Progress saved on this device</span></div>
  </div>
  <div class="home-actions">
@@ -310,47 +310,47 @@ button{transform-origin:center;zoom:var(--button-scale,1)}
  </div>
  <div class="dashboard-stats">
   <div class="dashboard-stat"><span>SUBJECTS</span><strong>11</strong></div>
-  <div class="dashboard-stat"><span>TEST FORMATS</span><strong>04</strong></div>
-  <div class="dashboard-stat"><span>TESTS COMPLETED</span><strong id="homeTestsCompleted">0</strong></div>
+  <div class="dashboard-stat"><span>QUIZ TYPES</span><strong>04</strong></div>
+  <div class="dashboard-stat"><span>QUIZZES TAKEN</span><strong id="homeTestsCompleted">0</strong></div>
  </div>
  <div class="activity-section">
-  <div class="activity-heading"><h2>Pick up where you left off</h2><button class="text-button" onclick="renderHistory();show('progress')">View history →</button></div>
-  <p class="sub">Your saved activity stays on this device.</p>
-  <div id="homeActivity" class="activity-list"><div class="activity-empty">Your recent study activity will appear here after you complete a test.</div></div>
+  <div class="activity-heading"><h2>Recent activity</h2><button class="text-button" onclick="renderHistory();show('progress')">View history →</button></div>
+  <p class="sub">Your activity is saved on this device.</p>
+  <div id="homeActivity" class="activity-list"><div class="activity-empty">Your recent quiz results will show here.</div></div>
  </div>
  <div class="home-profile-strip">
-  <div><strong id="homeProfileName">Your study profile</strong><small id="homeProfileMeta">Add your learner details</small></div>
+  <div><strong id="homeProfileName">My profile</strong><small id="homeProfileMeta">Add your details</small></div>
   <button class="secondary" onclick="openProfile()">View profile →</button>
  </div>
- <div class="curriculum-note">Starter questions are based on researched Grade 8 Term 2 curriculum themes. Some STE-specific subject splits and your school’s pacing still need confirmation.</div>
+ <div class="curriculum-note">The questions are a starting set based on Grade 8 Term 2 topics. Some subjects may need updating to match your class lessons.</div>
 </section>
 <section id="choices" class="panel hidden">
- <button class="secondary back" onclick="show('home')">← Back</button><h2>Choose what to study</h2><p class="sub">Pick a way to learn or practice.</p>
- <div class="menu"><button class="primary-menu" onclick="show('tests')"><span>📝 Tests <small class="hint">Practice and challenge yourself</small></span></button><button class="secondary" onclick="show('reviewers')"><span>📖 Reviewers <small class="hint">Explore subject notes</small></span></button></div>
+ <button class="secondary back" onclick="show('home')">← Back</button><h2>What do you want to do?</h2><p class="sub">Choose one to get started.</p>
+ <div class="menu"><button class="primary-menu" onclick="show('tests')"><span>📝 Tests <small class="hint">Answer practice questions</small></span></button><button class="secondary" onclick="show('reviewers')"><span>📖 Reviewers <small class="hint">Read your subject notes</small></span></button></div>
 </section>
 <section id="tests" class="panel hidden">
- <button class="secondary back" onclick="show('choices')">← Back</button><h2>Tests</h2><p class="sub">Choose a subject to practice.</p><div id="testSubjects" class="grid"></div>
+ <button class="secondary back" onclick="show('choices')">← Back</button><h2>Tests</h2><p class="sub">Choose a subject.</p><div id="testSubjects" class="grid"></div>
 </section>
 <section id="reviewers" class="panel hidden">
- <button class="secondary back" onclick="show('choices')">← Back</button><h2>Reviewers</h2><p class="sub">Choose a subject to open its reviewer.</p><div id="reviewSubjects" class="grid"></div>
+ <button class="secondary back" onclick="show('choices')">← Back</button><h2>Reviewers</h2><p class="sub">Choose a subject to review.</p><div id="reviewSubjects" class="grid"></div>
 </section>
 <section id="subject" class="panel hidden">
  <button class="secondary back" onclick="show(subjectFrom)">← Back</button><span class="tag" id="subjectTag"></span><h2 id="subjectTitle"></h2><p class="sub" id="subjectSubtitle"></p>
  <div id="subjectModes" class="grid"></div><div id="reviewContent" class="hidden"></div>
- <div class="curriculum-note">Provisional research-based starter set. Topics are drawn from available Grade 8 Term 2 curriculum references; your teacher’s actual sequence may differ.</div>
+ <div class="curriculum-note">These questions are based on available Grade 8 Term 2 topics. Your class may cover some topics in a different order.</div>
 </section>
 <section id="setup" class="panel hidden">
- <button class="secondary back" onclick="show('subject')">← Back</button><span class="tag">TEST SETUP</span><h2 id="setupTitle">Configure your test</h2><p class="sub">Choose your settings before starting.</p>
+ <button class="secondary back" onclick="show('subject')">← Back</button><span class="tag">QUIZ SETTINGS</span><h2 id="setupTitle">Set up your quiz</h2><p class="sub">Choose your time, difficulty, and number of questions.</p>
  <div class="field"><label for="timePerQuestion">1. Time per question</label><select id="timePerQuestion"><option value="10">10 seconds</option><option value="15">15 seconds</option><option value="30">30 seconds</option><option value="45">45 seconds</option><option value="60">1 minute</option><option value="90">1 minute 30 seconds</option><option value="120">2 minutes</option><option value="custom">Custom time</option></select></div>
  <div class="field hidden" id="customTimeWrap"><label for="customTime">Custom time (seconds)</label><input id="customTime" type="number" min="1" max="3600" value="20"></div>
  <div class="field"><label>2. Difficulty</label><div class="choice-row" id="difficultyChoices"><button type="button" data-level="Easy" onclick="pickDifficulty('Easy')">Easy</button><button type="button" data-level="Medium" class="selected" onclick="pickDifficulty('Medium')">Medium</button><button type="button" data-level="Hard" onclick="pickDifficulty('Hard')">Hard</button></div></div>
- <div class="field"><label for="questionCount">3. Number of questions (1–100)</label><input id="questionCount" type="number" min="1" max="100" value="10"><small class="hint">The test uses only the unique questions currently available for the selected subject.</small></div>
- <div class="notice">Questions are selected without duplicates within a test. This is a provisional research-based bank; the current starter pool has 12 unique questions per subject.</div>
- <button class="full" onclick="startTest()">Save test setup</button><p id="setupMessage" class="muted" aria-live="polite"></p>
+ <div class="field"><label for="questionCount">3. Number of questions (1–100)</label><input id="questionCount" type="number" min="1" max="100" value="10"><small class="hint">Only available questions for this subject will be used.</small></div>
+ <div class="notice">Questions will not repeat in the same quiz. There are currently 12 questions for each subject.</div>
+ <button class="full" onclick="startTest()">Start quiz</button><p id="setupMessage" class="muted" aria-live="polite"></p>
 </section>
 <section id="quiz" class="panel hidden">
  <div class="quiz-shell">
-  <div class="quiz-top"><div><span class="tag">ACTIVE TEST</span><div class="quiz-meta"><span class="pill" id="quizSubject"></span><span class="pill" id="quizMode"></span><span class="pill" id="quizDifficulty"></span></div></div><div class="timer-wrap"><span class="timer-text" id="timerText">00:00</span><div class="timer-track"><div id="timerFill" class="timer-fill"></div></div></div></div>
+  <div class="quiz-top"><div><span class="tag">QUIZ IN PROGRESS</span><div class="quiz-meta"><span class="pill" id="quizSubject"></span><span class="pill" id="quizMode"></span><span class="pill" id="quizDifficulty"></span></div></div><div class="timer-wrap"><span class="timer-text" id="timerText">00:00</span><div class="timer-track"><div id="timerFill" class="timer-fill"></div></div></div></div>
   <div><div class="quiz-top"><span class="muted" id="questionCounter">Question 1 of 10</span><strong id="questionTopic"></strong></div><div class="progress-track" style="margin-top:8px"><div id="questionProgress" class="progress-fill"></div></div></div>
   <div class="quiz-question"><div class="quiz-meta"><span class="pill" id="questionDifficulty"></span><span class="pill" id="questionType"></span></div><h2 id="questionPrompt"></h2>
    <div id="answerArea" class="answer-list"></div>
@@ -361,14 +361,14 @@ button{transform-origin:center;zoom:var(--button-scale,1)}
  </div>
 </section>
 <section id="results" class="panel hidden">
- <span class="tag">TEST COMPLETE</span><h2 id="resultHeading">Your results</h2><p class="sub" id="resultSubtitle"></p>
+ <span class="tag">QUIZ COMPLETE</span><h2 id="resultHeading">Your results</h2><p class="sub" id="resultSubtitle"></p>
  <div class="result-score" id="resultScore">0/0</div><p class="muted" id="resultPercent"></p>
  <div class="result-grid"><div class="result-stat"><b id="resultCorrect">0</b><small>Correct</small></div><div class="result-stat"><b id="resultIncorrect">0</b><small>Incorrect</small></div><div class="result-stat"><b id="resultDuration">—</b><small>Questions</small></div></div>
  <div class="notice" id="resultMessage"></div>
  <div class="row" style="margin-top:16px"><button onclick="retryTest()">Try again</button><button class="secondary" onclick="show('choices')">Main menu</button></div>
 </section>
 <section id="progress" class="panel hidden">
- <button class="secondary back" onclick="show('settings')">← Back to Settings</button><h2>Study progress</h2><p class="sub">Your most recent saved results on this device.</p><div id="historyList"></div><button class="secondary full" onclick="clearHistory()">Clear saved test history</button>
+ <button class="secondary back" onclick="show('settings')">← Back to Settings</button><h2>Study progress</h2><p class="sub">Your recent quiz results on this device.</p><div id="historyList"></div><button class="secondary full" onclick="clearHistory()">Clear saved test history</button>
 </section>
 <section id="profile" class="panel hidden">
  <button class="secondary back" onclick="show('home')">← Back</button>
@@ -385,16 +385,16 @@ button{transform-origin:center;zoom:var(--button-scale,1)}
  </div>
  <button class="full" onclick="saveProfile()">Save profile</button><p id="profileMessage" class="muted" aria-live="polite"></p>
  <div class="dashboard-stats profile-stats">
-  <div class="dashboard-stat"><span>TESTS COMPLETED</span><strong id="profileTests">0</strong></div>
+  <div class="dashboard-stat"><span>QUIZZES TAKEN</span><strong id="profileTests">0</strong></div>
   <div class="dashboard-stat"><span>AVERAGE SCORE</span><strong id="profileAverage">—</strong></div>
   <div class="dashboard-stat"><span>BEST SCORE</span><strong id="profileBest">—</strong></div>
  </div>
  <div class="notice">Your profile and test history are saved locally in this browser. They do not automatically sync to another device or create a verified school account.</div>
 </section>
 <section id="settings" class="panel hidden">
- <button class="secondary back" onclick="show('home')">← Back</button><span class="tag">PERSONALIZE</span><h2>Settings</h2><p class="sub">Make Heiko Study comfortable and easy to read.</p>
+ <button class="secondary back" onclick="show('home')">← Back</button><span class="tag">PREFERENCES</span><h2>Settings</h2><p class="sub">Change how Heiko Study looks and works.</p>
  <div class="settings-group">
-  <div class="group-head"><div class="group-icon">🎨</div><div><h3>Appearance</h3><p>Choose the look of your study space.</p></div></div>
+  <div class="group-head"><div class="group-icon">🎨</div><div><h3>Appearance</h3><p>Change the colors and layout.</p></div></div>
   <div class="setting-grid">
    <div class="setting-item"><label for="theme">Theme</label><select id="theme"><option value="dark">Dark</option><option value="light">Light</option><option value="system">System default</option></select></div>
    <div class="setting-item"><label for="density">Layout spacing</label><select id="density"><option value="normal">Balanced</option><option value="spacious">Spacious</option><option value="compact">Compact</option></select></div>
@@ -409,14 +409,14 @@ button{transform-origin:center;zoom:var(--button-scale,1)}
   <div class="toggle-line"><div><span>Larger buttons</span><small>Make controls easier to tap.</small></div><input class="switch" id="bigButtons" type="checkbox" aria-label="Larger buttons"></div>
  </div>
  <div class="settings-group">
-  <div class="group-head"><div class="group-icon">✨</div><div><h3>Experience</h3><p>Control small interface effects.</p></div></div>
+  <div class="group-head"><div class="group-icon">✨</div><div><h3>Sounds & animations</h3><p>Turn effects on or off.</p></div></div>
   <div class="toggle-line"><div><span>Animations</span><small>Enable smooth transitions and movement.</small></div><input class="switch" id="animations" type="checkbox" checked aria-label="Animations"></div>
   <div class="setting-item"><label for="animationStyle">Animation intensity</label><select id="animationStyle"><option value="subtle">Subtle — gentle fades and lifts</option><option value="standard" selected>Standard — smooth transitions</option><option value="lively">Lively — more noticeable motion</option></select></div>
   <div class="toggle-line"><div><span>Interface & answer sounds</span><small>Play sounds for taps, selections, and answers.</small></div><input class="switch" id="sounds" type="checkbox" aria-label="Interface & answer sounds"></div>
   <div class="setting-item"><label for="soundVolume">Sound volume</label><input id="soundVolume" type="range" min="0" max="100" value="65"><small class="hint">Tap the test button to check your sound.</small><button type="button" class="secondary" id="testSoundButton" style="margin-top:10px" onclick="testSound()">▶ Test sound</button></div>
  </div>
  <div class="settings-group">
-  <div class="group-head"><div class="group-icon">🧠</div><div><h3>Quiz preferences</h3><p>Set your usual test defaults.</p></div></div>
+  <div class="group-head"><div class="group-icon">🧠</div><div><h3>Quiz settings</h3><p>Choose your default quiz options.</p></div></div>
   <div class="setting-grid">
    <div class="setting-item"><label for="defaultRush">Rush Quiz time (seconds)</label><input id="defaultRush" type="number" min="1" max="3600" value="10"></div>
    <div class="setting-item"><label for="defaultRegular">Regular Quiz time (seconds)</label><input id="defaultRegular" type="number" min="1" max="3600" value="60"></div>
@@ -428,7 +428,7 @@ button{transform-origin:center;zoom:var(--button-scale,1)}
   <div class="toggle-line"><div><span>Show explanations</span><small>Display explanations after answering, when available.</small></div><input class="switch" id="explanations" type="checkbox" checked aria-label="Show explanations"></div>
  </div>
  <div class="settings-group">
-  <div class="group-head"><div class="group-icon">📈</div><div><h3>Progress</h3><p>Choose what to keep on this device.</p></div></div>
+  <div class="group-head"><div class="group-icon">📈</div><div><h3>Saved results</h3><p>Choose whether to save your quiz scores.</p></div></div>
   <div class="toggle-line"><div><span>Save scores and progress</span><small>Remember completed tests on this device.</small></div><input class="switch" id="saveProgress" type="checkbox" checked aria-label="Save scores and progress"></div>
   <div class="notice">Your preferences are stored in this browser on this device. Clearing browser data may reset them.</div>
  </div>
@@ -449,7 +449,7 @@ const reviewerNotes = {"Science":["Pure substances have fixed chemical compositi
 const curriculumSources = {"Araling Panlipunan":"https://nash.com.ph/curriculum/grade-8/araling-panlipunan","English":"https://nash.com.ph/curriculum/grade-8/english","Filipino":"https://nash.com.ph/curriculum/grade-8/filipino","MAPEH":"https://nash.com.ph/curriculum/grade-8/mapeh","Mathematics":"https://nash.com.ph/curriculum/grade-8/mathematics","Science":"https://nash.com.ph/curriculum/grade-8/science","TLE ICT":"https://nash.com.ph/curriculum/grade-8/tle-ict","Values Education":"https://nash.com.ph/curriculum/grade-8/values-education"};
 function show(id){document.querySelectorAll('main section').forEach(s=>s.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');window.scrollTo({top:0,behavior:document.body.classList.contains('no-motion')?'auto':'smooth'});}
 function makeCards(target,from){const root=document.getElementById(target);root.innerHTML='';subjects.forEach(name=>{const b=document.createElement('button');b.className='subject';b.innerHTML=name+'<small>'+(from==='tests'?'Open test modes':'Open reviewer')+'</small>';b.addEventListener('click',()=>openSubject(name,from));root.appendChild(b);});}
-function openSubject(name,from){subjectFrom=from;currentSubject=name;document.getElementById('subjectTitle').textContent=name;document.getElementById('subjectTag').textContent=from==='tests'?'TESTS':'REVIEWER';document.getElementById('subjectSubtitle').textContent=from==='tests'?'Choose your preferred test type.':'Quick notes based on the researched starter topics.';const box=document.getElementById('subjectModes');box.innerHTML='';if(from==='tests'){modes.forEach(m=>{const b=document.createElement('button');b.className='mode';b.innerHTML=m+'<small>'+modeDescription(m)+'</small>';b.onclick=()=>openSetup(m);box.appendChild(b);});document.getElementById('reviewContent').classList.add('hidden');}else{renderReviewer(name); }show('subject');}
+function openSubject(name,from){subjectFrom=from;currentSubject=name;document.getElementById('subjectTitle').textContent=name;document.getElementById('subjectTag').textContent=from==='tests'?'TESTS':'REVIEWER';document.getElementById('subjectSubtitle').textContent=from==='tests'?'Choose a quiz type.':'Review the notes for this subject.';const box=document.getElementById('subjectModes');box.innerHTML='';if(from==='tests'){modes.forEach(m=>{const b=document.createElement('button');b.className='mode';b.innerHTML=m+'<small>'+modeDescription(m)+'</small>';b.onclick=()=>openSetup(m);box.appendChild(b);});document.getElementById('reviewContent').classList.add('hidden');}else{renderReviewer(name); }show('subject');}
 function modeDescription(m){return m==='Rush Quiz'?'Fast-paced multiple-choice questions':m==='Identification'?'Type the answer without choices':m==='True or False'?'Judge each statement':m==='Regular Quiz'?'Multiple-choice practice with a relaxed pace':'';}
 function renderReviewer(name){const root=document.getElementById('reviewContent');root.innerHTML='';const notes=reviewerNotes[name]||[];const heading=document.createElement('h3');heading.textContent='Term 2 quick reviewer';root.appendChild(heading);const list=document.createElement('div');list.className='review-points';notes.forEach(note=>{const p=document.createElement('div');p.className='review-point';p.textContent=note;list.appendChild(p);});root.appendChild(list);const count=document.createElement('p');count.className='muted';count.style.marginTop='15px';count.textContent=(questionBank[name]||[]).length+' starter practice questions available.';root.appendChild(count);const src=curriculumSources[name];if(src){const link=document.createElement('a');link.href=src;link.target='_blank';link.rel='noopener noreferrer';link.textContent='Open curriculum reference ↗';link.style.color='var(--accent2)';link.style.fontWeight='750';root.appendChild(link);}root.classList.remove('hidden');}
 function openSetup(mode){currentMode=mode;document.getElementById('setupTitle').textContent=currentSubject+' · '+mode;const s=getSettings();document.getElementById('timePerQuestion').value=mode==='Rush Quiz'?String(s.rush||10):mode==='Regular Quiz'?String(s.regular||60):'60';document.getElementById('questionCount').value=s.count||10;document.getElementById('customTimeWrap').classList.add('hidden');document.getElementById('questionCount').max='100';pickDifficulty(s.difficulty||'Medium');const available=(questionBank[currentSubject]||[]).length;document.getElementById('setupMessage').textContent=available+' researched starter questions are currently available. Difficulty is prioritized; if you request more questions than exist at that level, nearby levels fill the test. The test count is capped at '+available+' unique questions.';show('setup');}
@@ -459,7 +459,7 @@ function shuffleArray(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const 
 function getPrioritizedQuestions(items,level,shuffle){const levels=level==='Easy'?['Easy','Medium','Hard']:level==='Hard'?['Hard','Medium','Easy']:['Medium','Easy','Hard'];let out=[];levels.forEach(l=>{const group=items.filter(q=>q.level===l);out=out.concat(shuffle?shuffleArray(group):group);});return out;}
 function orderChoices(q,shuffle,index){if(shuffle)return shuffleArray(q.options);const opts=[...q.options];const offset=(q.id.charCodeAt(q.id.length-1)+index)%opts.length;return opts.slice(offset).concat(opts.slice(0,offset));}
 function startTest(){const raw=document.getElementById('timePerQuestion').value;const seconds=raw==='custom'?Number(document.getElementById('customTime').value):Number(raw);const requested=Number(document.getElementById('questionCount').value);const items=questionBank[currentSubject]||[];if(!Number.isInteger(seconds)||seconds<1||seconds>3600){alert('Enter a time from 1 to 3600 seconds.');return;}if(!Number.isInteger(requested)||requested<1||requested>100){alert('Choose between 1 and 100 questions.');return;}if(!items.length){alert('There are no questions for this subject yet.');return;}
- const settings=getSettings();const count=Math.min(requested,items.length);const ordered=getPrioritizedQuestions(items,difficulty,settings.shuffleQuestions!==false);quizQuestions=ordered.slice(0,count).map((q,i)=>({...q,options:orderChoices(q,settings.shuffleChoices!==false,i)}));quizIndex=0;quizScore=0;quizAnswered=false;secondsPerQuestion=seconds;lastRunConfig={subject:currentSubject,mode:currentMode,difficulty,count:quizQuestions.length,requested};document.getElementById('quizSubject').textContent=currentSubject;document.getElementById('quizMode').textContent=currentMode;document.getElementById('quizDifficulty').textContent=difficulty+' preferred';if(requested>items.length){document.getElementById('setupMessage').textContent='This starter bank has '+items.length+' unique questions, so this test will use all '+items.length+'.';}else{document.getElementById('setupMessage').textContent='';}loadQuizQuestion();show('quiz');}
+ const settings=getSettings();const count=Math.min(requested,items.length);const ordered=getPrioritizedQuestions(items,difficulty,settings.shuffleQuestions!==false);quizQuestions=ordered.slice(0,count).map((q,i)=>({...q,options:orderChoices(q,settings.shuffleChoices!==false,i)}));quizIndex=0;quizScore=0;quizAnswered=false;secondsPerQuestion=seconds;lastRunConfig={subject:currentSubject,mode:currentMode,difficulty,count:quizQuestions.length,requested};document.getElementById('quizSubject').textContent=currentSubject;document.getElementById('quizMode').textContent=currentMode;document.getElementById('quizDifficulty').textContent=difficulty+' selected';if(requested>items.length){document.getElementById('setupMessage').textContent='This starter bank has '+items.length+' unique questions, so this test will use all '+items.length+'.';}else{document.getElementById('setupMessage').textContent='';}loadQuizQuestion();show('quiz');}
 function loadQuizQuestion(){clearInterval(timerId);quizAnswered=false;const q=quizQuestions[quizIndex];const total=quizQuestions.length;document.getElementById('questionCounter').textContent='Question '+(quizIndex+1)+' of '+total;document.getElementById('questionProgress').style.width=((quizIndex+1)/total*100)+'%';document.getElementById('questionDifficulty').textContent=q.level+' level';document.getElementById('questionType').textContent=currentMode;document.getElementById('questionTopic').textContent='';document.getElementById('questionPrompt').textContent=currentMode==='True or False'?q.tf:(currentMode==='Identification'?q.idPrompt:q.prompt);const area=document.getElementById('answerArea');area.innerHTML='';const feedback=document.getElementById('answerFeedback');feedback.classList.add('hidden');feedback.classList.remove('good','bad');feedback.replaceChildren();document.getElementById('nextQuestion').classList.add('hidden');document.getElementById('quitQuiz').classList.remove('hidden');
  if(currentMode==='Identification'){const wrap=document.createElement('div');wrap.className='answer-entry';const input=document.createElement('input');input.type='text';input.id='identificationAnswer';input.placeholder='Type your answer here';input.autocomplete='off';input.setAttribute('aria-label','Your answer');const submit=document.createElement('button');submit.textContent='Submit answer';submit.onclick=()=>{const value=input.value.trim();if(!value){input.focus();return;}submitAnswer(value,false);};input.addEventListener('keydown',e=>{if(e.key==='Enter')submit.click();});wrap.append(input,submit);area.appendChild(wrap);}
  else if(currentMode==='True or False'){['True','False'].forEach(label=>{const b=document.createElement('button');b.className='answer-option';b.textContent=label;b.onclick=()=>submitAnswer(label==='True',false);area.appendChild(b);});}
@@ -471,7 +471,7 @@ function normalizeAnswer(v){return String(v??'').toLowerCase().replaceAll('π','
 function isCorrect(q,response){if(currentMode==='True or False')return response===q.tfAnswer;if(currentMode==='Identification'){const value=normalizeAnswer(response);const accepted=[q.answer,...(q.aliases||[])].map(normalizeAnswer);if(accepted.includes(value))return true;const numeric=normalizeAnswer(q.answer).match(/^-?\d+(?:\.\d+)?/);return !!numeric&&value===numeric[0];}return response===q.answer;}
 function submitAnswer(response,timedOut){if(quizAnswered)return;quizAnswered=true;clearInterval(timerId);const q=quizQuestions[quizIndex];const correct=isCorrect(q,response);playAnswerSound(correct,timedOut);if(correct)quizScore++;const area=document.getElementById('answerArea');const buttons=area.querySelectorAll('button');buttons.forEach(b=>{b.disabled=true;if((currentMode==='True or False' && ((b.textContent==='True')===!!response)) || (currentMode!=='True or False' && currentMode!=='Identification' && (b.querySelector('span:last-child')?.textContent||'')===response)){b.classList.add('selected');b.setAttribute('aria-pressed','true');}if(currentMode==='True or False'&&((b.textContent==='True')===q.tfAnswer))b.classList.add('correct');if(currentMode!=='True or False'&&currentMode!=='Identification'){const label=b.querySelector('span:last-child')?.textContent||'';if(label===q.answer)b.classList.add('correct');if(label===response&&!correct)b.classList.add('wrong');}});const textInput=area.querySelector('input');if(textInput)textInput.disabled=true;const feedback=document.getElementById('answerFeedback');feedback.classList.remove('hidden','good','bad');feedback.classList.add(correct?'good':'bad');const title=document.createElement('strong');title.textContent=timedOut?'⏱ Time is up':correct?'✓ Correct!':'✕ Not quite';const answer=document.createElement('div');answer.textContent='Correct answer: '+(currentMode==='True or False'?(q.tfAnswer?'True':'False'):q.answer);feedback.append(title,answer);if(getSettings().explanations!==false){const exp=document.createElement('p');exp.style.margin='9px 0 0';exp.textContent=q.explanation;feedback.appendChild(exp);}document.getElementById('nextQuestion').classList.remove('hidden');document.getElementById('nextQuestion').textContent=quizIndex===quizQuestions.length-1?'See results →':'Next question →';document.getElementById('quitQuiz').classList.add('hidden');}
 function nextQuestion(){if(!quizAnswered)return;if(quizIndex<quizQuestions.length-1){quizIndex++;loadQuizQuestion();}else{finishTest();}}
-function finishTest(){clearInterval(timerId);const total=quizQuestions.length;const incorrect=total-quizScore;const percent=Math.round(quizScore/total*100);document.getElementById('resultHeading').textContent=currentSubject+' · '+currentMode;document.getElementById('resultSubtitle').textContent='Preferred difficulty: '+difficulty+'. You completed the test.';document.getElementById('resultScore').textContent=quizScore+' / '+total;document.getElementById('resultPercent').textContent=percent+'% accuracy';document.getElementById('resultCorrect').textContent=quizScore;document.getElementById('resultIncorrect').textContent=incorrect;document.getElementById('resultDuration').textContent=total;document.getElementById('resultMessage').textContent=percent>=80?'Great work! Review the explanations for anything you missed.':percent>=50?'Good effort. Check the explanations, then try another round.':'Keep practicing. Review the notes and try again when ready.';if(getSettings().saveProgress!==false){let hist=[];try{hist=JSON.parse(localStorage.getItem('heikoScores')||'[]');}catch(e){}hist.unshift({subject:currentSubject,mode:currentMode,difficulty,score:quizScore,total,percent,date:new Date().toLocaleString()});localStorage.setItem('heikoScores',JSON.stringify(hist.slice(0,30)));}updateHomeDashboard();refreshProfileStats();show('results');}
+function finishTest(){clearInterval(timerId);const total=quizQuestions.length;const incorrect=total-quizScore;const percent=Math.round(quizScore/total*100);document.getElementById('resultHeading').textContent=currentSubject+' · '+currentMode;document.getElementById('resultSubtitle').textContent='Difficulty: '+difficulty+'. You completed the test.';document.getElementById('resultScore').textContent=quizScore+' / '+total;document.getElementById('resultPercent').textContent=percent+'% accuracy';document.getElementById('resultCorrect').textContent=quizScore;document.getElementById('resultIncorrect').textContent=incorrect;document.getElementById('resultDuration').textContent=total;document.getElementById('resultMessage').textContent=percent>=80?'Great work! Review the explanations for anything you missed.':percent>=50?'Good effort. Check the explanations, then try another round.':'Keep practicing. Review the notes and try again when ready.';if(getSettings().saveProgress!==false){let hist=[];try{hist=JSON.parse(localStorage.getItem('heikoScores')||'[]');}catch(e){}hist.unshift({subject:currentSubject,mode:currentMode,difficulty,score:quizScore,total,percent,date:new Date().toLocaleString()});localStorage.setItem('heikoScores',JSON.stringify(hist.slice(0,30)));}updateHomeDashboard();refreshProfileStats();show('results');}
 function retryTest(){if(!lastRunConfig)return show('choices');document.getElementById('questionCount').value=lastRunConfig.requested;startTest();}
 function confirmQuitQuiz(){if(confirm('Exit this test? Your current score will not be saved.')){clearInterval(timerId);show('subject');}}
 function renderHistory(){const root=document.getElementById('historyList');root.innerHTML='';let hist=[];try{hist=JSON.parse(localStorage.getItem('heikoScores')||'[]');}catch(e){}if(!hist.length){root.textContent='No saved tests yet. Complete a test with Save scores and progress turned on.';return;}hist.forEach(h=>{const row=document.createElement('div');row.className='history-row';const left=document.createElement('div');const title=document.createElement('strong');title.textContent=h.subject+' · '+h.mode;const detail=document.createElement('div');detail.className='muted';detail.textContent=h.date+' · '+h.difficulty;left.append(title,detail);const score=document.createElement('strong');score.textContent=h.score+'/'+h.total+' ('+h.percent+'%)';row.append(left,score);root.appendChild(row);});}
@@ -482,11 +482,11 @@ function readProfile(){try{return JSON.parse(localStorage.getItem('heikoProfile'
 function updateHomeDashboard(){
  const scores=readScores();const profile=readProfile();
  document.getElementById('homeTestsCompleted').textContent=scores.length;
- const name=profile.name||'Your study profile';
+ const name=profile.name||'My profile';
  document.getElementById('homeProfileName').textContent=name;
  document.getElementById('homeProfileMeta').textContent=(profile.grade||'Grade 8')+' · '+(profile.section||'STE');
  const root=document.getElementById('homeActivity');root.innerHTML='';
- if(!scores.length){const empty=document.createElement('div');empty.className='activity-empty';empty.textContent='Your recent study activity will appear here after you complete a test.';root.appendChild(empty);return;}
+ if(!scores.length){const empty=document.createElement('div');empty.className='activity-empty';empty.textContent='Your recent quiz results will show here.';root.appendChild(empty);return;}
  scores.slice(0,3).forEach(item=>{const row=document.createElement('div');row.className='activity-item';const left=document.createElement('div');const title=document.createElement('strong');title.textContent=item.subject+' · '+item.mode;const meta=document.createElement('small');meta.textContent=(item.date||'Completed')+' · '+(item.difficulty||'');left.append(title,meta);const score=document.createElement('span');score.className='activity-score';score.textContent=item.score+'/'+item.total+' ('+item.percent+'%)';row.append(left,score);root.appendChild(row);});
 }
 function openProfile(){
