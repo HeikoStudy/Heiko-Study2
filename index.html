@@ -125,6 +125,30 @@ footer{padding-top:22px}
 @keyframes feedbackIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
 @media(max-width:600px){header{padding:32px 14px 24px}.panel{padding:17px}.subject,.mode{min-height:100px}.quiz-question{padding:17px}.answer-option{padding:13px}}
 
+
+/* Heiko Study visual overhaul */
+:root{--card-alpha:.94;--content-max:960px}
+main{width:min(var(--content-max),calc(100% - 28px))}
+.panel,.hero-card,.dashboard-stat,.activity-item,.activity-empty,.home-profile-strip,.profile-card,.settings-group,.subject,.mode,.subject-card,.mode-card,.choice-card,.review-point,.result-stat,.continue-card,.daily-goal-card{transition:background .2s,border-color .2s,box-shadow .2s,transform .2s;}
+body.card-glass .panel,body.card-glass .hero-card,body.card-glass .dashboard-stat,body.card-glass .activity-item,body.card-glass .activity-empty,body.card-glass .home-profile-strip,body.card-glass .profile-card,body.card-glass .settings-group,body.card-glass .subject,body.card-glass .mode,body.card-glass .subject-card,body.card-glass .mode-card,body.card-glass .choice-card,body.card-glass .review-point,body.card-glass .result-stat,body.card-glass .continue-card,body.card-glass .daily-goal-card{backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);background:color-mix(in srgb,var(--surface) calc(var(--card-alpha)*100%),transparent)}
+body.card-gradient .panel,body.card-gradient .hero-card,body.card-gradient .dashboard-stat,body.card-gradient .activity-item,body.card-gradient .subject,body.card-gradient .mode,body.card-gradient .choice-card,body.card-gradient .subject-card{background:linear-gradient(140deg,color-mix(in srgb,var(--surface2) 88%,var(--accent) 12%),var(--surface))}
+body.card-outline .panel,body.card-outline .hero-card,body.card-outline .dashboard-stat,body.card-outline .activity-item,body.card-outline .subject,body.card-outline .mode,body.card-outline .choice-card,body.card-outline .subject-card{background:transparent}
+body.no-card-shadow :is(.panel,.hero-card,.dashboard-stat,.activity-item,.subject,.mode,.choice-card,.subject-card,.continue-card,.daily-goal-card){box-shadow:none!important}
+body.deep-card-shadow :is(.panel,.hero-card,.dashboard-stat,.activity-item,.subject,.mode,.choice-card,.subject-card,.continue-card,.daily-goal-card){box-shadow:0 18px 42px #0005!important}
+body.no-card-border :is(.panel,.hero-card,.dashboard-stat,.activity-item,.subject,.mode,.choice-card,.subject-card,.continue-card,.daily-goal-card){border-color:transparent!important}
+body.clear-card-border :is(.panel,.hero-card,.dashboard-stat,.activity-item,.subject,.mode,.choice-card,.subject-card,.continue-card,.daily-goal-card){border-width:2px!important}
+body.hover-glow :is(.subject,.mode,.choice-card,.subject-card,.quick-tool):hover{box-shadow:0 0 0 2px color-mix(in srgb,var(--accent) 60%,transparent),0 12px 30px #0003}
+body.hover-flat :is(.subject,.mode,.choice-card,.subject-card,.quick-tool):hover{transform:none!important;box-shadow:none!important}
+body.no-background-glow{background:var(--bg)!important}
+body.glass-panels .panel,body.glass-panels .settings-group{backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);background:color-mix(in srgb,var(--surface) 78%,transparent)}
+.quick-tools-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:18px 0}
+.quick-tool{display:grid;gap:5px;text-align:left;background:var(--surface);color:var(--text);border:1px solid var(--line);border-radius:18px;padding:16px;min-height:120px}
+.quick-tool>span{font-size:1.5rem}.quick-tool small{font-weight:500;color:var(--muted)}
+.tool-list{display:grid;gap:10px;margin-top:18px}.tool-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:13px;border:1px solid var(--line);border-radius:14px;background:var(--surface2)}.tool-row.done{opacity:.62}.tool-row.done b{text-decoration:line-through}.tool-row small{display:block;color:var(--muted)}
+.tool-row button{min-height:38px;padding:8px 11px}.flashcard-stage{margin:20px 0;min-height:190px;display:grid;place-items:center;text-align:center;padding:24px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(140deg,var(--surface2),var(--surface));cursor:pointer}.flashcard-stage strong{font-size:1.25rem}.flashcard-stage .muted{margin:8px 0 0}
+textarea{width:100%;padding:13px 14px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:inherit;resize:vertical}
+@media(max-width:600px){.quick-tools-grid{grid-template-columns:1fr}.quick-tool{min-height:unset;grid-template-columns:auto 1fr;align-items:center}.quick-tool>span{grid-row:span 2}.tool-row{align-items:flex-start}.row{flex-direction:column}}
+
 </style>
 
 <style id="heiko-visual-upgrade">
@@ -325,6 +349,11 @@ body{font-family:var(--font-family,system-ui,-apple-system,"Segoe UI",sans-serif
   <button class="home-choice-button" onclick="show('choices')"><span>✦ &nbsp; Choices</span></button>
   <button class="home-settings-button" onclick="show('settings')"><span>⚙ &nbsp; Settings</span></button>
  </div>
+ <div class="quick-tools-grid">
+  <button class="quick-tool" onclick="openPlanner()"><span>🗓️</span><b>Study planner</b><small>Plan your study tasks</small></button>
+  <button class="quick-tool" onclick="openFlashcards()"><span>🗂️</span><b>Flashcards</b><small>Make and review cards</small></button>
+  <button class="quick-tool" onclick="openAnalytics()"><span>📊</span><b>Performance</b><small>See your study stats</small></button>
+ </div>
  <div class="home-study-tools">
   <div class="daily-goal-card"><div class="goal-top"><div><span class="mini-label">DAILY GOAL</span><h3 id="dailyGoalText">0 of 3 quizzes today</h3></div><span class="goal-icon">✦</span></div><div class="goal-track"><div id="dailyGoalFill"></div></div><small id="streakText">Start a study streak today.</small></div>
   <button class="continue-card" id="continueStudyButton" onclick="continueStudying()"><span class="continue-icon">▶</span><span><small>CONTINUE STUDYING</small><strong id="continueStudyText">Choose a subject</strong><em>Pick up where you left off →</em></span></button>
@@ -416,6 +445,19 @@ body{font-family:var(--font-family,system-ui,-apple-system,"Segoe UI",sans-serif
  <div class="achievement-section"><h3>Achievements</h3><p class="muted">Milestones from your saved quiz activity.</p><div id="achievementGrid" class="achievement-grid"></div></div>
  <div class="notice">Your profile and test history are saved locally in this browser. They do not automatically sync to another device or create a verified school account.</div>
 </section>
+<section id="planner" class="panel hidden">
+ <button class="secondary back" onclick="show('home')">← Back</button><span class="tag">STUDY TOOLS</span><h2>Study planner</h2><p class="sub">Add tasks and keep track of what you want to study.</p>
+ <div class="row"><div class="field"><label for="plannerTask">Task</label><input id="plannerTask" maxlength="90" placeholder="e.g. Review Science notes"></div><div class="field"><label for="plannerDate">Due date</label><input id="plannerDate" type="date"></div></div>
+ <button class="full" onclick="addPlannerTask()">＋ Add task</button><div id="plannerList" class="tool-list"></div>
+</section>
+<section id="flashcards" class="panel hidden">
+ <button class="secondary back" onclick="show('home')">← Back</button><span class="tag">STUDY TOOLS</span><h2>Flashcards</h2><p class="sub">Create your own cards from your class notes, then flip to check your answer.</p>
+ <div class="field"><label for="flashFront">Question / term</label><input id="flashFront" maxlength="180" placeholder="Enter a term or question"></div><div class="field"><label for="flashBack">Answer / definition</label><textarea id="flashBack" maxlength="500" placeholder="Enter the answer" rows="3"></textarea></div><button class="full" onclick="addFlashcard()">＋ Save flashcard</button>
+ <div id="flashcardStage" class="flashcard-stage"><p class="muted">Your saved flashcards will appear here.</p></div><div class="row"><button class="secondary" onclick="previousFlashcard()">← Previous</button><button class="secondary" onclick="nextFlashcard()">Next →</button></div><p id="flashcardCount" class="muted" style="text-align:center"></p>
+</section>
+<section id="analytics" class="panel hidden">
+ <button class="secondary back" onclick="show('home')">← Back</button><span class="tag">YOUR PROGRESS</span><h2>Performance</h2><p class="sub">A quick look at your saved quiz results on this device.</p><div id="analyticsContent" class="dashboard-stats"></div><div id="subjectAnalytics" class="tool-list"></div>
+</section>
 <section id="settings" class="panel hidden">
  <button class="secondary back" onclick="show('home')">← Back</button><span class="tag">PREFERENCES</span><h2>Settings</h2><p class="sub">Change how Heiko Study looks and works.</p>
  <div class="settings-group">
@@ -456,6 +498,19 @@ body{font-family:var(--font-family,system-ui,-apple-system,"Segoe UI",sans-serif
   <div class="group-head"><div class="group-icon">📈</div><div><h3>Saved results</h3><p>Choose whether to save your quiz scores.</p></div></div>
   <div class="toggle-line"><div><span>Save scores and progress</span><small>Remember completed tests on this device.</small></div><input class="switch" id="saveProgress" type="checkbox" checked aria-label="Save scores and progress"></div>
   <div class="notice">Your preferences are stored in this browser on this device. Clearing browser data may reset them.</div>
+ </div>
+ <div class="settings-group" id="advancedStyleGroup">
+  <div class="group-head"><div class="group-icon">🪄</div><div><h3>Card & interface style</h3><p>Fine-tune how the whole site looks.</p></div></div>
+  <div class="setting-grid">
+   <div class="setting-item"><label for="cardStyle">Card appearance</label><select id="cardStyle"><option value="solid">Solid</option><option value="glass">Glass / frosted</option><option value="gradient">Gradient</option><option value="outline">Outlined</option></select></div>
+   <div class="setting-item"><label for="cardOpacity">Card transparency <output id="cardOpacityValue">94%</output></label><input id="cardOpacity" type="range" min="55" max="100" value="94"></div>
+   <div class="setting-item"><label for="cardShadow">Card shadows</label><select id="cardShadow"><option value="none">None</option><option value="soft">Soft</option><option value="deep">Deep</option></select></div>
+   <div class="setting-item"><label for="cardBorder">Card borders</label><select id="cardBorder"><option value="subtle">Subtle</option><option value="clear">Visible</option><option value="none">No border</option></select></div>
+   <div class="setting-item"><label for="cardHover">Hover / tap effect</label><select id="cardHover"><option value="lift">Lift</option><option value="glow">Glow</option><option value="flat">None</option></select></div>
+   <div class="setting-item"><label for="contentWidth">Content width</label><select id="contentWidth"><option value="narrow">Narrow</option><option value="standard">Standard</option><option value="wide">Wide</option></select></div>
+  </div>
+  <div class="toggle-line"><div><span>Subtle background texture</span><small>Add a soft decorative glow behind the page.</small></div><input class="switch" id="backgroundGlow" type="checkbox" checked></div>
+  <div class="toggle-line"><div><span>Glass effect on panels</span><small>Use a light blur and translucent surface.</small></div><input class="switch" id="glassPanels" type="checkbox"></div>
  </div>
  <div class="preview"><strong>Preview</strong><p class="muted" style="margin:5px 0 0">This is how your text and buttons will appear with the current display settings.</p><button type="button" style="margin-top:10px" onclick="playClick()">Sample button</button></div>
  <button class="secondary full" onclick="renderHistory();show('progress')">📈 View saved test history</button>
@@ -676,6 +731,40 @@ document.getElementById('profileGrade').addEventListener('change',()=>{const p=r
 document.getElementById('profileSection').addEventListener('change',()=>{const p=readProfile();p.section=document.getElementById('profileSection').value.trim().slice(0,40);localStorage.setItem('heikoProfile',JSON.stringify(p));refreshProfileStats();updateHomeDashboard();});
 
 window.addEventListener('error',function(event){try{let box=document.getElementById('heikoRuntimeNotice');if(!box){box=document.createElement('div');box.id='heikoRuntimeNotice';box.setAttribute('role','alert');box.style.cssText='position:fixed;left:12px;right:12px;bottom:12px;z-index:99999;padding:12px 14px;border:2px solid #e58b72;border-radius:12px;background:#3a2024;color:#fff;font:14px/1.45 system-ui;box-shadow:0 8px 30px #0008';document.body.appendChild(box);}box.textContent='Heiko Study hit a loading error. Refresh the page; if it keeps happening, send a screenshot of this message. '+(event.message||'Unknown error');}catch(e){}});
+
+// Advanced appearance controls and personal study tools
+function escapeHTML(value){return String(value??'').replace(/[&<>\"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;',"'":'&#39;'}[ch]));}
+function readHistory(){try{return JSON.parse(localStorage.getItem('heikoScores')||'[]')}catch(e){return []}}
+const advancedIds=['cardStyle','cardOpacity','cardShadow','cardBorder','cardHover','contentWidth','backgroundGlow','glassPanels'];
+function getAdvanced(){try{return JSON.parse(localStorage.getItem('heikoAdvanced')||'{}')}catch(e){return {}}}
+function applyAdvanced(a){const d={cardStyle:'solid',cardOpacity:94,cardShadow:'soft',cardBorder:'subtle',cardHover:'lift',contentWidth:'standard',backgroundGlow:true,glassPanels:false,...a};
+ document.body.classList.remove('card-glass','card-gradient','card-outline','no-card-shadow','deep-card-shadow','no-card-border','clear-card-border','hover-glow','hover-flat','no-background-glow','glass-panels');
+ if(d.cardStyle!=='solid')document.body.classList.add('card-'+d.cardStyle);
+ if(d.cardShadow==='none')document.body.classList.add('no-card-shadow');if(d.cardShadow==='deep')document.body.classList.add('deep-card-shadow');
+ if(d.cardBorder==='none')document.body.classList.add('no-card-border');if(d.cardBorder==='clear')document.body.classList.add('clear-card-border');
+ if(d.cardHover==='glow')document.body.classList.add('hover-glow');if(d.cardHover==='flat')document.body.classList.add('hover-flat');
+ if(!d.backgroundGlow)document.body.classList.add('no-background-glow');if(d.glassPanels)document.body.classList.add('glass-panels');
+ document.documentElement.style.setProperty('--card-alpha',Number(d.cardOpacity)/100);
+ document.documentElement.style.setProperty('--content-max',d.contentWidth==='narrow'?'760px':d.contentWidth==='wide'?'1180px':'960px');
+ const out=document.getElementById('cardOpacityValue');if(out)out.textContent=d.cardOpacity+'%';}
+function loadAdvanced(){const a=getAdvanced();advancedIds.forEach(id=>{const el=document.getElementById(id);if(el&&a[id]!==undefined){if(el.type==='checkbox')el.checked=!!a[id];else el.value=a[id];}});applyAdvanced(a);}
+function saveAdvanced(){const a={...getAdvanced()};advancedIds.forEach(id=>{const el=document.getElementById(id);if(el)a[id]=el.type==='checkbox'?el.checked:el.value;});localStorage.setItem('heikoAdvanced',JSON.stringify(a));applyAdvanced(a);}
+advancedIds.forEach(id=>{const el=document.getElementById(id);if(el){el.addEventListener('input',()=>{const a={...getAdvanced()};a[id]=el.type==='checkbox'?el.checked:el.value;applyAdvanced(a);});el.addEventListener('change',saveAdvanced);}});
+function readTasks(){try{return JSON.parse(localStorage.getItem('heikoPlanner')||'[]')}catch(e){return []}}
+function renderPlanner(){const box=document.getElementById('plannerList');if(!box)return;const tasks=readTasks();box.innerHTML=tasks.length?tasks.map((t,i)=>`<div class="tool-row ${t.done?'done':''}"><div><b>${escapeHTML(t.text)}</b><small>${t.date?'Due '+escapeHTML(t.date):'No due date'}</small></div><div><button class="secondary" onclick="togglePlannerTask(${i})">${t.done?'Undo':'Done'}</button> <button class="secondary" onclick="deletePlannerTask(${i})">×</button></div></div>`).join(''):'<div class="notice">No tasks yet. Add something you want to study.</div>';}
+function addPlannerTask(){const input=document.getElementById('plannerTask'),date=document.getElementById('plannerDate');const text=input.value.trim();if(!text){input.focus();return;}const tasks=readTasks();tasks.unshift({text,date:date.value,done:false});localStorage.setItem('heikoPlanner',JSON.stringify(tasks));input.value='';renderPlanner();}
+function togglePlannerTask(i){const a=readTasks();if(a[i])a[i].done=!a[i].done;localStorage.setItem('heikoPlanner',JSON.stringify(a));renderPlanner();}
+function deletePlannerTask(i){const a=readTasks();a.splice(i,1);localStorage.setItem('heikoPlanner',JSON.stringify(a));renderPlanner();}
+function openPlanner(){renderPlanner();show('planner')}
+function readFlashcards(){try{return JSON.parse(localStorage.getItem('heikoFlashcards')||'[]')}catch(e){return []}}
+let flashIndex=0,flashFlipped=false;
+function renderFlashcard(){const a=readFlashcards(),stage=document.getElementById('flashcardStage');if(!stage)return;if(!a.length){stage.innerHTML='<p class="muted">No flashcards yet. Add your first one above.</p>';document.getElementById('flashcardCount').textContent='0 cards';return;}flashIndex=(flashIndex+a.length)%a.length;const c=a[flashIndex];stage.innerHTML=`<div><small class="muted">${flashFlipped?'ANSWER':'QUESTION · TAP TO FLIP'}</small><br><strong>${escapeHTML(flashFlipped?c.back:c.front)}</strong></div>`;stage.onclick=()=>{flashFlipped=!flashFlipped;renderFlashcard()};document.getElementById('flashcardCount').textContent=`Card ${flashIndex+1} of ${a.length} · ${a.length} saved`;}
+function addFlashcard(){const f=document.getElementById('flashFront'),b=document.getElementById('flashBack');if(!f.value.trim()||!b.value.trim()){(!f.value.trim()?f:b).focus();return;}const a=readFlashcards();a.push({front:f.value.trim(),back:b.value.trim()});localStorage.setItem('heikoFlashcards',JSON.stringify(a));f.value='';b.value='';flashIndex=a.length-1;flashFlipped=false;renderFlashcard();}
+function previousFlashcard(){flashIndex--;flashFlipped=false;renderFlashcard()}function nextFlashcard(){flashIndex++;flashFlipped=false;renderFlashcard()}function openFlashcards(){flashFlipped=false;renderFlashcard();show('flashcards')}
+function openAnalytics(){renderAnalytics();show('analytics')}
+function renderAnalytics(){const h=readHistory();const box=document.getElementById('analyticsContent'),subjectsBox=document.getElementById('subjectAnalytics');if(!box)return;const total=h.length,avg=total?Math.round(h.reduce((n,x)=>n+Number(x.percent||0),0)/total):0,best=total?Math.max(...h.map(x=>Number(x.percent||0))):0;box.innerHTML=`<div class="dashboard-stat"><span>QUIZZES</span><strong>${total}</strong></div><div class="dashboard-stat"><span>AVERAGE</span><strong>${total?avg+'%':'—'}</strong></div><div class="dashboard-stat"><span>BEST</span><strong>${total?best+'%':'—'}</strong></div>`;const names=[...new Set(h.map(x=>x.subject).filter(Boolean))];subjectsBox.innerHTML=names.length?names.map(n=>{const rows=h.filter(x=>x.subject===n),v=Math.round(rows.reduce((z,x)=>z+Number(x.percent||0),0)/rows.length);return `<div class="tool-row"><div><b>${escapeHTML(n)}</b><small>${rows.length} quiz${rows.length===1?'':'zes'}</small></div><strong>${v}%</strong></div>`}).join(''):'<div class="notice">Complete a quiz to start seeing subject performance here.</div>';}
+loadAdvanced();
+const _heikoOriginalSaveSettings=saveSettings;saveSettings=function(){_heikoOriginalSaveSettings();saveAdvanced();};
 </script>
 </body>
 </html>
